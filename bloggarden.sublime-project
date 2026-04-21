@@ -1,0 +1,52 @@
+{
+    "settings": {
+        "lsp_format_on_save": true,
+    },
+    "folders": [
+        {
+            "path": ".",
+            "file_exclude_patterns": [
+                ".gitkeep",
+                "*.snap",
+                "*.lock",
+                "*lock.json"
+            ],
+            "folder_exclude_patterns": [
+                ".sanity",
+                ".netlify",
+                ".next",
+                ".vercel",
+                ".cache",
+                "out",
+                "dist",
+                "node_modules",
+                ".idea",
+                "web-ext-artifacts"
+            ],
+        },
+    ],
+    "build_systems": [
+        {
+            "name": "Build RSS",
+            "working_dir": "$project_path",
+            "shell_cmd": "./src/buildrss.lua"
+        },
+        {
+            "name": "Make Release",
+            "working_dir": "$project_path",
+            "shell_cmd": "./src/zip.sh"
+        },
+        {
+            "name": "Bump version",
+            "working_dir": "$project_path",
+            "shell_cmd": "./src/bumpversion.lua",
+            "env": {
+                "LUA_PATH": "/opt/local/share/lua/5.3/?.lua;/opt/local/share/lua/5.3/?/init.lua;/opt/local/lib/lua/5.3/?.lua;/opt/local/lib/lua/5.3/?/init.lua;./?.lua;./?/init.lua;/Users/agarzia/.luarocks/share/lua/5.3/?.lua;/Users/agarzia/.luarocks/share/lua/5.3/?/init.lua;/opt/local/share/luarocks/share/lua/5.3/?.lua;/opt/local/share/luarocks/share/lua/5.3/?/init.lua",
+                "LUA_CPATH": "/opt/local/lib/lua/5.3/?.so;/opt/local/lib/lua/5.3/loadall.so;./?.so;/Users/agarzia/.luarocks/lib/lua/5.3/?.so;/opt/local/share/luarocks/lib/lua/5.3/?.so",
+                "C_INCLUDE_PATH": "/opt/local/include",
+                "CPLUS_INCLUDE_PATH": "/opt/local/include",
+                "LIBRARY_PATH": "/opt/local/lib"
+            }
+        }
+    ]
+}

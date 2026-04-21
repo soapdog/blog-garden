@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>BlogGarden</title>
+  <link rel="stylesheet" href="/vendor/pico.classless.min.css" />
+  <script src="./vendor/rss-parser.min.js"></script>
+  <script src="./vendor/mithril.js"></script>
+  <script src="./vendor/xss-filters.js"></script>
+  <script defer type="module" src="app.js"></script>
+  <style type="text/css">
+    .cat-icon {
+      max-height: 64px;
+      padding-right: 20px;
+    }
+
+    nav.feed-item li {
+      padding-top: 1rem;
+      padding-bottom: 0.4rem;
+    }
+
+    h1.year-banner {
+      text-align: center;
+      margin-top: 20px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      border-top: 1px dashed;
+      border-bottom: 1px dashed;
+      font-size: 0.9rem;
+    }
+
+    .cat-icon {
+      max-height: 64px;
+      padding-right: 5px;
+    }
+
+    .box {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .right {
+      float: right;
+    }
+
+    .item-list-expanded .feed-item {
+      text-wrap: pretty;
+      max-width: 520px;
+      display: inline-block;
+      padding-bottom: 10px;
+      text-decoration: none;
+    }
+
+    .item-list-expanded {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .cat-icon {
+      max-height: 64px;
+    }
+
+    .right {
+      float: right;
+    }
+
+    .item-list-expanded .feed-item {
+      text-wrap: pretty;
+      max-width: 520px;
+      display: inline-block;
+      padding-bottom: 10px;
+      text-decoration: none;
+    }
+
+    .item-list-expanded {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    /* podcast */
+    nav.feed-item li {
+      padding-top: 1rem;
+      padding-bottom: 0.4rem;
+    }
+
+    .podcast-banner {
+      max-width: 150px;
+    }
+
+    video {
+      max-width: 250px;
+    }
+
+    video.video {
+      max-width: 640px;
+
+    }
+
+    .podcast-meta,
+    .episode-meta {
+      display: flex;
+      vertical-align: top;
+    }
+
+    .description {
+      border-left: solid 1px;
+      padding-left: 10px;
+      margin-left: 10px;
+    }
+
+    .season-pills {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      max-width: 100vw;
+      overflow: scroll;
+    }
+
+    .season-pills>button {
+      flex: 1 1 auto;
+    }
+
+    .season-pills>button:not([selected]) {
+      flex: 1 1 auto;
+      background-color: var(--pico-form-element-background-color);
+      color: var(--pico-form-element-color);
+    }
+
+    .episode-pills {
+      display: flex;
+      gap: 10px;
+      max-width: 100vw;
+      overflow: scroll;
+    }
+
+
+
+    .episode-pills>.episode {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .episode-pills>.episode>img {
+      max-width: 200px;
+      border-radius: 5px 5px 0px 0px;
+    }
+
+    .episode>figcaption {
+      padding: 3px;
+      border-radius: 0px 0px 5px 5px;
+    }
+
+    .episode-pills>.episode[selected]>figcaption {
+      background-color: var(--pico-primary-hover-background) !important;
+      color: var(--pico-primary-inverse) !important;
+    }
+
+    .episode-pills>.episode:not([selected]) {
+      flex: 1 1 auto;
+      background-color: var(--pico-form-element-background-color);
+      color: var(--pico-form-element-color);
+    }
+
+    /* SIDEBAR */
+    /* The side navigation menu */
+    .menu {
+      margin: 0;
+      padding: 0;
+      width: 200px;
+      background-color: #f1f1f1;
+      position: fixed;
+      height: 100%;
+      overflow: auto;
+    }
+
+    /* Sidebar links */
+    .menu a {
+      display: block;
+      color: black;
+      padding: 16px;
+      text-decoration: none;
+    }
+
+    /* Active/current link */
+    .menu a.active {
+      background-color: #04AA6D;
+      color: white;
+    }
+
+    /* Links on mouse-over */
+    .menu a:hover:not(.active) {
+      background-color: #555;
+      color: white;
+    }
+
+    /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+    div.app {
+      margin-left: 200px;
+      padding: 1px 16px;
+      height: 1000px;
+    }
+
+    /* On screens that are less than 700px wide, make the sidebar into a topbar */
+    @media screen and (max-width: 700px) {
+      .menu {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+
+      .menu a {
+        float: left;
+      }
+
+      div.app {
+        margin-left: 0;
+      }
+    }
+
+    /* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+    @media screen and (max-width: 400px) {
+      .menu a {
+        text-align: center;
+        float: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="menu" class="menu"></div>
+  <div id="app" class="app"></div>
+  <div id="sidebar"></div>
+</body>
+
+</html>

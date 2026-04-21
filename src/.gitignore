@@ -1,0 +1,10 @@
+.nova
+.amo*
+.idea
+.DS_Store
+*.sh
+web-ext-artifacts
+*.zip
+*.sublime-project
+*.sublime-workspace
+*.template
