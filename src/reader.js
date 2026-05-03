@@ -339,19 +339,6 @@ const TagsMenu = {
 const Menu = {
   view: (vnode) => {
     return m("nav", [
-      m(
-        "ul",
-        m(
-          "li",
-          m("div.box", [
-            m("img", {
-              src: "../icons/cat_reading512c.png",
-              class: "cat-icon",
-            }),
-            m("h2", { style: { display: "inline" } }, "BlogCat"),
-          ]),
-        ),
-      ),
       m("ul", [
         m(
           "li",
